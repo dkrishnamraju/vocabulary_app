@@ -1,0 +1,305 @@
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    color: #0056b3;
+    margin-bottom: 20px;
+}
+
+nav {
+    margin-bottom: 30px;
+}
+
+nav button,
+.mode button,
+.spelling-sub-nav button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+nav button:hover,
+.mode button:not(.mcq-option):hover,
+.spelling-sub-nav button:hover {
+    background-color: #0056b3;
+}
+
+/* Hide inactive modes */
+.mode {
+    display: none;
+}
+
+.mode.active {
+    display: block;
+}
+
+/* --- Card Styling (Applies to Flashcards and Spelling Teach) --- */
+.card {
+    width: 100%;
+    /* Increased height again to better fit potential content without scrolling */
+    height: 280px;
+    perspective: 1000px;
+    margin: 20px auto;
+    cursor: pointer; /* Cursor indicates it's clickable */
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    background-color: #e9e9e9; /* Default back background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    /* Removed overflow-y: auto; to avoid scrolling */
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    /* Removed overflow-y: auto; */
+}
+
+.card-front {
+    background-color: #007bff;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.4;
+    /* Ensure content doesn't overflow the (now larger) card */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.card-front .meaning-hint {
+    font-size: 0.8em;
+    font-weight: normal;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+.card-front span {
+    font-size: 1em;
+    font-weight: normal;
+    text-align: center;
+    margin-top: 5px;
+    /* Ensure meaning text doesn't overflow */
+     word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+
+.card-back {
+    background-color: #f8f9fa;
+    color: #333;
+    transform: rotateY(180deg);
+    font-size: 1.1em;
+    text-align: left;
+    align-items: flex-start;
+    /* Ensure content doesn't overflow the (now larger) card */
+     word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.card-back.spelling-back {
+    justify-content: flex-start;
+}
+
+.card-back.spelling-back p {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.navigation-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation-buttons span {
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+
+/* MCQ Styling */
+.mcq-options {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.mcq-option {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    color: #333;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    font-size: 1em;
+    word-wrap: break-word; /* Prevent long meanings from overflowing */
+    overflow-wrap: break-word;
+}
+
+.mcq-option:hover {
+    background-color: #dcdcdc;
+    border-color: #a9a9a9;
+}
+
+.mcq-option.selected {
+    background-color: #e2d9f3;
+    border: 1px solid #7c529b;
+    font-weight: bold;
+    color: #333;
+}
+
+.mcq-option.correct {
+    background-color: #28a745;
+    border-color: #218838;
+    color: white;
+}
+
+.mcq-option.incorrect {
+    background-color: #dc3545;
+    border-color: #c82333;
+    color: white;
+}
+
+
+.feedback {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    min-height: 1.5em;
+    text-align: center;
+    word-wrap: break-word; /* Ensure feedback fits */
+    overflow-wrap: break-word;
+}
+
+.feedback.correct {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.feedback.incorrect {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Spelling Styling */
+.spelling-sub-nav {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.spelling-sub-mode {
+    display: none;
+    padding-top: 15px;
+}
+
+.spelling-sub-mode.active {
+    display: block;
+}
+
+.spelling-sub-mode h3 {
+    margin-top: 0;
+}
+
+/* Style for inputs within spelling modes */
+#spelling-teach-input,
+#spelling-test-input {
+    padding: 10px;
+    margin: 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    width: calc(100% - 22px);
+    display: block;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+/* Ensure check button is hidden visually but occupies space when card is not flipped */
+#check-spelling-teach.hidden-button {
+    visibility: hidden;
+}
+
+/* Style for score displays */
+#spelling-teach-score-display,
+#spelling-test-score,
+#mcq-score {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #0056b3; /* Match heading color */
+}
+
+
+#restart-mcq,
+#restart-spelling-test {
+    margin-top: 20px;
+    background-color: #dc3545;
+}
+
+#restart-mcq:hover,
+#restart-spelling-test:hover {
+     background-color: #c82333;
+}

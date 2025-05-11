@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Vocabulary Builder</h1>
+
+        <nav>
+            <button id="show-flashcards">Flashcards</button>
+            <button id="show-mcq">Multiple Choice</button>
+            <button id="show-spelling">Spelling</button>
+        </nav>
+
+        <div id="flashcard-mode" class="mode active">
+            <h2>Flashcards</h2>
+            <div class="card" id="flashcard">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <p id="flashcard-word"></p>
+                    </div>
+                    <div class="card-back">
+                        <p id="flashcard-meaning"></p>
+                    </div>
+                </div>
+            </div>
+            <button id="flip-card">Flip Card</button>
+            <div class="navigation-buttons">
+                <button id="prev-card">Previous</button>
+                <span id="card-counter"></span>
+                <button id="next-card">Next</button>
+            </div>
+        </div>
+
+        <div id="mcq-mode" class="mode">
+            <h2>Multiple Choice Question</h2>
+            <div class="mcq-question">
+                <p>What is the meaning of: <strong id="mcq-word"></strong>?</p>
+                <div id="mcq-options" class="mcq-options">
+                    </div>
+                <button id="submit-answer">Submit Answer</button>
+            </div>
+            <div id="mcq-feedback" class="feedback"></div>
+            <button id="next-mcq" class="hidden">Next Question</button>
+            <p id="mcq-score">Score: 0 / 0</p>
+            <button id="restart-mcq" class="hidden">Restart Quiz</button>
+        </div>
+
+        <div id="spelling-mode" class="mode">
+            <h2>Spelling Practice</h2>
+
+            <div class="spelling-sub-nav">
+                 <button id="show-spelling-teach">Teach Mode</button>
+                 <button id="show-spelling-test">Test Mode</button>
+            </div>
+
+            <div id="spelling-teach" class="spelling-sub-mode active">
+                <h3>Teach Mode</h3>
+                <div class="card" id="spelling-teach-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <p>Word:</p>
+                            <strong id="spelling-teach-word-front"></strong>
+                            <p class="meaning-hint">Meaning:</p>
+                            <span id="spelling-teach-meaning-front"></span>
+                        </div>
+                        <div class="card-back spelling-back">
+                             <p>Type the spelling:</p>
+                            <input type="text" id="spelling-teach-input" placeholder="Type the word" spellcheck="false" autocomplete="off">
+                            <button id="check-spelling-teach">Check Spelling</button>
+                            <div id="spelling-teach-feedback" class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+                <button id="flip-spelling-teach-card">Flip Card</button>
+                 <div class="navigation-buttons">
+                    <button id="prev-spelling-teach">Previous</button>
+                    <span id="spelling-teach-counter"></span>
+                    <button id="next-spelling-teach">Next</button>
+                </div>
+                 <p id="spelling-teach-score-display">Score: 0 Correct</p>
+            </div>
+
+             <div id="spelling-test" class="spelling-sub-mode">
+                <h3>Test Mode</h3>
+                <p>Meaning: <strong id="spelling-test-meaning"></strong></p>
+                <input type="text" id="spelling-test-input" placeholder="Type the word" spellcheck="false" autocomplete="off">
+                <button id="check-spelling-test">Check Spelling</button>
+                <div id="spelling-test-feedback" class="feedback"></div>
+                <p id="spelling-test-score">Score: 0 / 0</p>
+                 <div class="navigation-buttons">
+                    <button id="prev-spelling-test">Previous</button>
+                     <span id="spelling-test-counter"></span>
+                    <button id="next-spelling-test">Next</button>
+                </div>
+                <button id="restart-spelling-test" class="hidden">Restart Test</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
