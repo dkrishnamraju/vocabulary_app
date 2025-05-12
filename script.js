@@ -35,7 +35,7 @@ const vocabulary = [
     { word: 'augment', meaning: 'To increase or add to.' },
     { word: 'auspicious', meaning: 'Favorable or promising.' },
     { word: 'austere', meaning: 'Severe or strict in manner or appearance.' },
-    { word: 'arbiter', meaning: 'A person who settles disputes or has ultimate authority.' },
+/*    { word: 'arbiter', meaning: 'A person who settles disputes or has ultimate authority.' },
     { word: 'arcane', meaning: 'Mysterious or known only to a few.' },
     { word: 'archetype', meaning: 'A typical example or original model.' },
     { word: 'arduous', meaning: 'Requiring great effort; difficult.' },
@@ -466,7 +466,7 @@ const vocabulary = [
     { word: 'xenophobia', meaning: 'Fear or hatred of foreigners.' },
     { word: 'yearn', meaning: 'To have a strong desire or longing.' },
     { word: 'zealot', meaning: 'A fanatic or extremist.' },
-    { word: 'zealous', meaning: 'Passionately devoted.' }
+    { word: 'zealous', meaning: 'Passionately devoted.' }*/
 ];
 
 
